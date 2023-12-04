@@ -1,2 +1,2 @@
 .section .data
-sum:
+sum:    .word 0

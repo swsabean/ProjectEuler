@@ -3,10 +3,10 @@ sum:     .word 0
 format:  .asciz "%d\n" // Format string for printf
 
 .section	 .text
-.global _start
+.global asm_main
 .extern printf
 
-_start:
+asm_main:
 // Calculate number of multiples
     ldr x0, =999 // Upper limit - 1 (since we want below 1000)
     mov x1, #3 // Divisor for 3

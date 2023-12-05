@@ -6,20 +6,23 @@ sum:     .word 0
 
 _start:
     // Calculate number of multiples
-    mov x0, #999 // Upper limit - 1 (since we want below 1000)
+    ldr x0, =999 // Upper limit - 1 (since we want below 1000)
     mov x1, #3 // Divisor for 3
     bl calc_multiples // x0 = sum of multiples of 3
     mov x3, x0 // Store result in x3
 
-    mov x0, #999
+    ldr x0, =999
     mov x1, #5 // Divisor for 5
     bl calc_multiples // x0 = sum of multiples of 5
     add x3, x3, x0 // Add result to x3
 
-    mov x0, #999
+    ldr x0, =999
     mov x1, #15 // Divisor for 15
     bl calc_multiples // x0 = sum of multiples of 15
-    sub x3, x3, x0 // subtract result from x3
+    sub x3, x3, x0 // Subtract result from x3
+
+    // Store result
+    str x3, sum // Store the sum in memory
 
 calc_multiples:
     // x0 = upper limit, x1 = divisor

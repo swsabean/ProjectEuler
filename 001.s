@@ -21,8 +21,13 @@ _start:
     bl calc_multiples // x0 = sum of multiples of 15
     sub x3, x3, x0 // Subtract result from x3
 
-    // Store result
+// Store result
     str x3, sum // Store the sum in memory
+
+// Exit code (for Linux)
+    mov x8, #93 // syscall number for exit in Linux AArch64
+    mov x0, #0 // Status code
+    svc 0 // Make syscall
 
 calc_multiples:
     // x0 = upper limit, x1 = divisor

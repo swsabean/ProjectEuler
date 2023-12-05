@@ -1,13 +1,15 @@
 .section .data
 sum:     .word 0
 
-.section		.text
+.section	 .text
 .global _start
 
 _start:
     // Calculate number of multiples
     mov x0, #999 // Upper limit - 1 (since we want below 1000)
     mov x1, #3 // Divisor for 3
+    bl calc_multiples // x0 = sum of multiples of 3
+    mov x3, x0 // Store result in x3
 
 calc_multiples:
     // x0 = upper limit, x1 = divisor

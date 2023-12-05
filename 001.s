@@ -1,8 +1,10 @@
 .section .data
 sum:     .word 0
+format:  .asciz "%d\n" // Format string for printf
 
 .section	 .text
 .global _start
+.extern printf
 
 _start:
 // Calculate number of multiples
@@ -27,6 +29,13 @@ _start:
 
 // Store result
     str x3, [x9] // Store the sum in memory
+
+// Prepare arguments for printf
+    ldr w1, =sum // Load the sum into w1 (first argument to print)
+    ldr x0, =format  // Load address of format string into x0
+
+// Call printf
+    bl printf
 
 // Exit code (for Linux)
     mov x8, #93 // syscall number for exit in Linux AArch64

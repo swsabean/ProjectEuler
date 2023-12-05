@@ -11,4 +11,10 @@ _start:
 
 calc_multiples:
     // x0 = upper limit, x1 = divisor
-    udiv x0, x0, x1
+    udiv x2, x0, x1 // x2 = upper limit / divisor
+    mul x0, x2 , x1 // x0 = x2 * divisor
+    add x2, x2, #1 // x2 = x2 + 1
+    mul x0, x0, x2 // x0 = x0 * x2
+    lsr x0, x0, #1 // x0 = x0 / 2 (sum of multiples)
+    ret
+

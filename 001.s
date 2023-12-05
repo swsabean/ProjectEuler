@@ -11,6 +11,11 @@ _start:
     bl calc_multiples // x0 = sum of multiples of 3
     mov x3, x0 // Store result in x3
 
+    mov x0, #999
+    mov x1, #5 // Divisor for 5
+    bl calc_multiples // x0 = sum of multiples of 5
+    add x3, x3, x0 // Add result to x3
+
 calc_multiples:
     // x0 = upper limit, x1 = divisor
     udiv x2, x0, x1 // x2 = upper limit / divisor

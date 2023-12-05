@@ -21,8 +21,12 @@ _start:
     bl calc_multiples // x0 = sum of multiples of 15
     sub x3, x3, x0 // Subtract result from x3
 
+// Load the address of 'sum' into x9
+    adrp x9, sum
+    add x9, x9, :lo12:sum
+
 // Store result
-    str x3, sum // Store the sum in memory
+    str x3, [x9] // Store the sum in memory
 
 // Exit code (for Linux)
     mov x8, #93 // syscall number for exit in Linux AArch64

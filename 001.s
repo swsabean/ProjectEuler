@@ -31,8 +31,8 @@ asm_main:
     str x3, [x9] // Store the sum in memory
 
 // Prepare arguments for printf
-    ldr w1, =sum // Load the sum into w1 (first argument to print)
-    ldr x0, =format  // Load address of format string into x0
+    ldr w1, sum // Load the sum into w1 (first argument to print)
+    adr x0, format  // Load address of format string into x0
 
 // Call printf
     bl printf
